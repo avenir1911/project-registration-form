@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng Ký Thông Tin Người Dùng</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="screen-wrapper">
+      <div class="form-container">
+        <h2 class="form-title">ĐĂNG KÝ THÔNG TIN NGƯỜI DÙNG</h2>
+
+        <form id="registerForm" autocomplete="off">
+          <div class="form-group">
+            <label for="fullname">HỌ VÀ TÊN</label>
+            <input type="text" id="fullname" class="form-control" />
+            <span class="error-msg" id="err-fullname"></span>
+          </div>
+
+          <div class="form-group">
+            <label>NGÀY SINH</label>
+            <div class="dob-group">
+              <select id="dobDay" class="form-control dob-select">
+                <option value="">Ngày</option>
+              </select>
+              <select id="dobMonth" class="form-control dob-select">
+                <option value="">Tháng</option>
+              </select>
+              <select id="dobYear" class="form-control dob-select">
+                <option value="">Năm</option>
+              </select>
+            </div>
+            <span class="error-msg" id="err-dob"></span>
+          </div>
+
+          <div class="form-group gender-group">
+            <label class="gender-title">GIỚI TÍNH</label>
+            <div class="radio-wrapper">
+              <input
+                type="radio"
+                id="nam"
+                name="gender"
+                value="Nam"
+                class="custom-radio"
+                checked
+              />
+              <label for="nam" class="radio-label">Nam</label>
+              <input
+                type="radio"
+                id="nu"
+                name="gender"
+                value="Nữ"
+                class="custom-radio"
+              />
+              <label for="nu" class="radio-label">Nữ</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">SỐ ĐIỆN THOẠI</label>
+            <input type="text" id="phone" class="form-control" maxlength="11" />
+            <span class="error-msg" id="err-phone"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" />
+            <span class="error-msg" id="err-email"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Mật khẩu</label>
+            <input type="password" id="password" class="form-control" />
+            <span class="error-msg" id="err-password"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Nhập lại mật khẩu</label>
+            <input type="password" id="confirmPassword" class="form-control" />
+            <span class="error-msg" id="err-confirm"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="city">Tỉnh/Thành phố</label>
+            <div class="custom-dropdown-wrapper">
+              <input
+                type="text"
+                id="city"
+                class="form-control"
+                placeholder="Gõ để tìm hoặc chọn..."
+              />
+              <div class="dropdown-list hidden" id="cityDropdown"></div>
+            </div>
+            <span class="error-msg" id="err-city"></span>
+          </div>
+
+          <div class="form-group terms-group">
+            <input type="checkbox" id="terms" class="custom-checkbox" />
+            <label for="terms" class="terms-label">Đồng ý điều khoản</label>
+          </div>
+
+          <div class="submit-group">
+            <button type="button" id="clearBtn" class="clear-btn">
+              Xóa form
+            </button>
+            <button type="submit" id="submitBtn" class="submit-btn" disabled>
+              ĐĂNG KÍ
+            </button>
+          </div>
+        </form>
+
+        <div id="summaryBox" class="summary-box hidden">
+          <h3>Tóm tắt thông tin</h3>
+          <p><strong>Họ tên:</strong> <span id="sum-name"></span></p>
+          <p><strong>Ngày sinh:</strong> <span id="sum-dob"></span></p>
+          <p><strong>Giới tính:</strong> <span id="sum-gender"></span></p>
+          <p><strong>SĐT:</strong> <span id="sum-phone"></span></p>
+          <p><strong>Email:</strong> <span id="sum-email"></span></p>
+          <p><strong>Tỉnh/Thành:</strong> <span id="sum-city"></span></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
