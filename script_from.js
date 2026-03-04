@@ -326,6 +326,7 @@ document.addEventListener("DOMContentLoaded", () => {
   inputs.terms.addEventListener("change", checkAllValid);
 
   // --- 6. XỬ LÝ SUBMIT VÀ CLEAR ---
+  
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     if (
@@ -363,7 +364,8 @@ document.addEventListener("DOMContentLoaded", () => {
       summaryBox.classList.remove("hidden");
     }
   });
-
+submitBtn.addEventListener("click", function () {
+    window.location.href = "dangnhap.html";
   btnClear.addEventListener("click", () => {
     form.reset();
     document
@@ -372,4 +374,5 @@ document.addEventListener("DOMContentLoaded", () => {
     summaryBox.classList.add("hidden");
     btnSubmit.disabled = true;
   });
+
 });
