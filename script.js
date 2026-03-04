@@ -326,6 +326,14 @@ document.addEventListener("DOMContentLoaded", () => {
   inputs.terms.addEventListener("change", checkAllValid);
 
   // --- 6. XỬ LÝ SUBMIT VÀ CLEAR ---
+
+  
+  submitBtn.addEventListener("click", function () {
+    window.location.href = "index_dangnhap.html";
+  });
+
+  
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     if (
@@ -373,3 +381,4 @@ document.addEventListener("DOMContentLoaded", () => {
     btnSubmit.disabled = true;
   });
 });
+
