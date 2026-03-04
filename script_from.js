@@ -365,7 +365,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 submitBtn.addEventListener("click", function () {
-    window.location.href = "dangnhap.html";
+    window.location.href = "index_dangnhap.html";
   btnClear.addEventListener("click", () => {
     form.reset();
     document
@@ -376,3 +376,4 @@ submitBtn.addEventListener("click", function () {
   });
 
 });
+
