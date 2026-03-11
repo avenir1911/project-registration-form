@@ -16,77 +16,83 @@ body {
 .screen-wrapper {
   background: linear-gradient(180deg, #71d0fa 0%, #daf4fc 100%);
   border: 3px solid #00a2ff;
-  padding: 40px 100px;
+  padding: 40px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   max-width: 800px;
-  min-height: 90vh;
+  min-height: 100vh;
 }
 
 .form-container {
   background-color: #fcfcfc;
   padding: 30px 40px;
-  width: 420px;
+  width: 100%;
+  max-width: 420px; 
   box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
 }
 
 .form-title {
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #000;
+  color: #006099;
 }
+
 .form-group {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   position: relative;
 }
 
 label {
   display: block;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: bold;
-  margin-bottom: 4px;
-  color: #000;
+  margin-bottom: 5px;
+  color: #333;
 }
 
 .form-control {
   width: 100%;
-  height: 30px;
-  border: 1px solid #999;
-  background-color: #f4f4f4;
-  padding: 0 8px;
+  height: 36px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  padding: 0 10px;
   outline: none;
+  border-radius: 4px;
 }
+
 .form-control:focus {
   border-color: #00a2ff;
   background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 162, 255, 0.3);
 }
 
-/* CSS Ngày Sinh */
 .dob-group {
   display: flex;
   justify-content: space-between;
 }
+
 .dob-select {
   width: 31%;
-  font-size: 12px;
+  font-size: 13px;
   cursor: pointer;
 }
 
-/* CSS Giới tính & Điều khoản */
 .gender-group {
   display: flex;
   align-items: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 5px;
 }
+
 .gender-title {
   margin-bottom: 0;
   margin-right: 20px;
 }
+
 .radio-wrapper {
   display: flex;
   align-items: center;
@@ -96,111 +102,124 @@ label {
 .custom-checkbox {
   appearance: none;
   -webkit-appearance: none;
-  width: 14px;
-  height: 14px;
-  background-color: #d8d8d8;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  border: 1px solid #999;
   border-radius: 50%;
   outline: none;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.custom-checkbox {
+  border-radius: 3px;
+  margin-right: 8px;
+}
+
 .custom-radio {
   margin-right: 5px;
 }
-.custom-checkbox {
-  margin-right: 8px;
-}
+
 .custom-radio:checked,
 .custom-checkbox:checked {
-  background-color: #444;
+  background-color: #00a2ff;
+  border-color: #00a2ff;
 }
+
+.custom-radio:checked::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.custom-checkbox:checked::after {
+  content: '✔';
+  color: white;
+  font-size: 10px;
+}
+
 .radio-label {
   margin-bottom: 0;
   margin-right: 20px;
-  font-size: 12px;
-  font-weight: bold;
+  font-size: 13px;
   cursor: pointer;
 }
 
 .terms-group {
   display: flex;
   align-items: center;
-  margin-top: 10px;
-  margin-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
+
 .terms-label {
   margin-bottom: 0;
   font-size: 13px;
-  font-weight: bold;
   cursor: pointer;
 }
 
-/* Nút Submit & Clear */
 .submit-group {
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
 }
+
 .submit-btn {
   background-color: #1cb5e0;
-  color: #000;
+  color: #fff;
   font-weight: bold;
-  border: 1px solid #000;
-  padding: 8px 30px;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 0;
+  flex: 1;
   font-size: 14px;
   cursor: pointer;
   transition: 0.3s;
 }
+
 .submit-btn:disabled {
   background-color: #cccccc;
   color: #666;
-  border-color: #999;
   cursor: not-allowed;
 }
+
+.submit-btn:not(:disabled):hover {
+  background-color: #008ebf;
+}
+
 .clear-btn {
   background-color: #f4f4f4;
   color: #333;
   font-weight: bold;
-  border: 1px solid #999;
-  padding: 8px 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px 20px;
   font-size: 14px;
   cursor: pointer;
   margin-right: 10px;
 }
 
-/* Báo lỗi */
+.clear-btn:hover {
+  background-color: #e0e0e0;
+}
+
 .error-msg {
   display: block;
-  color: red;
+  color: #e74c3c;
   font-size: 11px;
   min-height: 14px;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
-/* Tóm tắt */
-.summary-box {
-  margin-top: 20px;
-  padding: 15px;
-  border: 1px solid #00a2ff;
-  background-color: #eaf8ff;
-  border-radius: 4px;
-}
-.summary-box.hidden {
-  display: none;
-}
-.summary-box h3 {
-  text-align: center;
-  font-size: 14px;
-  margin-bottom: 10px;
-  color: #006099;
-}
-.summary-box p {
-  font-size: 13px;
-  margin-bottom: 5px;
-}
-
-/* Dropdown Tỉnh Thành Gợi Ý */
 .custom-dropdown-wrapper {
   position: relative;
   width: 100%;
 }
+
 .dropdown-list {
   position: absolute;
   top: 100%;
@@ -209,34 +228,95 @@ label {
   background: #fff;
   border: 1px solid #00a2ff;
   border-top: none;
+  border-radius: 0 0 4px 4px;
   max-height: 150px;
   overflow-y: auto;
   z-index: 10;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 .dropdown-list.hidden {
   display: none;
 }
+
 .dropdown-item {
-  padding: 8px 10px;
+  padding: 10px;
   font-size: 13px;
   cursor: pointer;
   border-bottom: 1px solid #f0f0f0;
 }
+
 .dropdown-item:last-child {
   border-bottom: none;
 }
+
 .dropdown-item:hover {
   background-color: #daf4fc;
   color: #00a2ff;
   font-weight: bold;
 }
+
 .dropdown-item.no-result {
   color: #999;
   cursor: default;
 }
-.dropdown-item.no-result:hover {
-  background-color: #fff;
-  font-weight: normal;
-  color: #999;
+
+/* ========================================= */
+/* CSS CHO BẢNG TÓM TẮT VÀ ẨN FORM           */
+/* ========================================= */
+.summary-box {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #00a2ff;
+  background-color: #eaf8ff;
+  border-radius: 4px;
+}
+
+.summary-box.hidden {
+  display: none;
+}
+
+form.hidden {
+  display: none;
+}
+
+.summary-box h3 {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #006099;
+}
+
+.summary-box p {
+  font-size: 13px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* ========================================= */
+/* RESPONSIVE CHO ĐIỆN THOẠI (MOBILE)        */
+/* ========================================= */
+@media (max-width: 480px) {
+  .screen-wrapper {
+    padding: 0;
+    border: none; 
+  }
+  .form-container {
+    padding: 25px 20px;
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 100vh; 
+  }
+  .dob-select {
+    font-size: 12px;
+    padding: 0 2px;
+  }
+  .submit-group {
+    flex-direction: column-reverse; 
+    gap: 10px;
+  }
+  .clear-btn {
+    margin-right: 0;
+    width: 100%;
+  }
 }

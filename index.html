@@ -37,22 +37,9 @@
           <div class="form-group gender-group">
             <label class="gender-title">GIỚI TÍNH</label>
             <div class="radio-wrapper">
-              <input
-                type="radio"
-                id="nam"
-                name="gender"
-                value="Nam"
-                class="custom-radio"
-                checked
-              />
+              <input type="radio" id="nam" name="gender" value="Nam" class="custom-radio" checked />
               <label for="nam" class="radio-label">Nam</label>
-              <input
-                type="radio"
-                id="nu"
-                name="gender"
-                value="Nữ"
-                class="custom-radio"
-              />
+              <input type="radio" id="nu" name="gender" value="Nữ" class="custom-radio" />
               <label for="nu" class="radio-label">Nữ</label>
             </div>
           </div>
@@ -84,12 +71,7 @@
           <div class="form-group">
             <label for="city">Tỉnh/Thành phố</label>
             <div class="custom-dropdown-wrapper">
-              <input
-                type="text"
-                id="city"
-                class="form-control"
-                placeholder="Gõ để tìm hoặc chọn..."
-              />
+              <input type="text" id="city" class="form-control" placeholder="Gõ để tìm hoặc chọn..." />
               <div class="dropdown-list hidden" id="cityDropdown"></div>
             </div>
             <span class="error-msg" id="err-city"></span>
@@ -101,23 +83,21 @@
           </div>
 
           <div class="submit-group">
-            <button type="button" id="clearBtn" class="clear-btn">
-              Xóa form
-            </button>
-            <button type="submit" id="submitBtn" class="submit-btn" disabled>
-              ĐĂNG KÍ
-            </button>
+            <button type="button" id="clearBtn" class="clear-btn">Xóa form</button>
+            <button type="submit" id="submitBtn" class="submit-btn" disabled>ĐĂNG KÍ</button>
           </div>
         </form>
 
         <div id="summaryBox" class="summary-box hidden">
-          <h3>Tóm tắt thông tin</h3>
+          <h3 style="color: #00a2ff; font-size: 18px; margin-bottom: 15px;">ĐĂNG KÝ THÀNH CÔNG!</h3>
           <p><strong>Họ tên:</strong> <span id="sum-name"></span></p>
           <p><strong>Ngày sinh:</strong> <span id="sum-dob"></span></p>
           <p><strong>Giới tính:</strong> <span id="sum-gender"></span></p>
           <p><strong>SĐT:</strong> <span id="sum-phone"></span></p>
           <p><strong>Email:</strong> <span id="sum-email"></span></p>
           <p><strong>Tỉnh/Thành:</strong> <span id="sum-city"></span></p>
+          
+          <button id="okBtn" class="submit-btn" style="margin-top: 20px; width: 100%;">OK, ĐẾN TRANG ĐĂNG NHẬP</button>
         </div>
       </div>
     </div>

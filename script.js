@@ -1,107 +1,63 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("registerForm");
-  const btnSubmit = document.getElementById("submitBtn");
-  const btnClear = document.getElementById("clearBtn");
-  const summaryBox = document.getElementById("summaryBox");
-  const cityDropdown = document.getElementById("cityDropdown");
+document.addEventListener("DOMContentLoaded", () => { //Đợi trang tải xong mới chạy script
+
+  const $ = (id) => document.getElementById(id);
+
+  const form = $("registerForm"); //lấy form chính
+
+  const buttons = {
+    submit: $("submitBtn"),
+    clear: $("clearBtn")
+  }; // Lấy các nút submit và clear
 
   const inputs = {
-    fullname: document.getElementById("fullname"),
-    dobDay: document.getElementById("dobDay"),
-    dobMonth: document.getElementById("dobMonth"),
-    dobYear: document.getElementById("dobYear"),
-    phone: document.getElementById("phone"),
-    email: document.getElementById("email"),
-    password: document.getElementById("password"),
-    confirm: document.getElementById("confirmPassword"),
-    city: document.getElementById("city"),
-    terms: document.getElementById("terms"),
-  };
+    fullname: $("fullname"),
+    dobDay: $("dobDay"),
+    dobMonth: $("dobMonth"),
+    dobYear: $("dobYear"),
+    phone: $("phone"),
+    email: $("email"),
+    password: $("password"),
+    confirm: $("confirmPassword"),
+    city: $("city"),
+    terms: $("terms")
+  }; // Lấy tất cả input cần thiết
 
-  // --- 1. ĐỔ DỮ LIỆU NGÀY THÁNG NĂM ---
-  const populateDOB = () => {
-    for (let i = 1; i <= 31; i++)
-      inputs.dobDay.innerHTML += `<option value="${i}">${i}</option>`;
-    for (let i = 1; i <= 12; i++)
-      inputs.dobMonth.innerHTML += `<option value="${i}">${i}</option>`;
-    const currentYear = new Date().getFullYear();
-    for (let i = currentYear; i >= 1920; i--)
-      inputs.dobYear.innerHTML += `<option value="${i}">${i}</option>`;
-  };
-  populateDOB();
+});
+
+  // ĐỔ DỮ LIỆU NGÀY THÁNG NĂM
+ const populateSelect = (element, start, end, step = 1) => {
+  let options = "";
+  for (let i = start; step > 0 ? i <= end : i >= end; i += step) {
+    options += `<option value="${i}">${i}</option>`;
+  }
+  element.innerHTML = options;
+};
+
+populateSelect(inputs.dobDay, 1, 31);
+populateSelect(inputs.dobMonth, 1, 12);
+
+const currentYear = new Date().getFullYear();
+populateSelect(inputs.dobYear, currentYear, currentYear - 100, -1);
 
   // --- 2. DỮ LIỆU TỈNH THÀNH & DROPDOWN GỢI Ý ---
   const provinces = [
-    "An Giang",
-    "Bà Rịa - Vũng Tàu",
-    "Bắc Giang",
-    "Bắc Kạn",
-    "Bạc Liêu",
-    "Bắc Ninh",
-    "Bến Tre",
-    "Bình Định",
-    "Bình Dương",
-    "Bình Phước",
-    "Bình Thuận",
-    "Cà Mau",
-    "Cần Thơ",
-    "Cao Bằng",
-    "Đà Nẵng",
-    "Đắk Lắk",
-    "Đắk Nông",
-    "Điện Biên",
-    "Đồng Nai",
-    "Đồng Tháp",
-    "Gia Lai",
-    "Hà Giang",
-    "Hà Nam",
-    "Hà Nội",
-    "Hà Tĩnh",
-    "Hải Dương",
-    "Hải Phòng",
-    "Hậu Giang",
-    "Hòa Bình",
-    "Hưng Yên",
-    "Khánh Hòa",
-    "Kiên Giang",
-    "Kon Tum",
-    "Lai Châu",
-    "Lâm Đồng",
-    "Lạng Sơn",
-    "Lào Cai",
-    "Long An",
-    "Nam Định",
-    "Nghệ An",
-    "Ninh Bình",
-    "Ninh Thuận",
-    "Phú Thọ",
-    "Phú Yên",
-    "Quảng Bình",
-    "Quảng Nam",
-    "Quảng Ngãi",
-    "Quảng Ninh",
-    "Quảng Trị",
-    "Sóc Trăng",
-    "Sơn La",
-    "Tây Ninh",
-    "Thái Bình",
-    "Thái Nguyên",
-    "Thanh Hóa",
-    "Thừa Thiên Huế",
-    "Tiền Giang",
-    "TP Hồ Chí Minh",
-    "Trà Vinh",
-    "Tuyên Quang",
-    "Vĩnh Long",
-    "Vĩnh Phúc",
-    "Yên Bái",
+    "An Giang", "Bà Rịa - Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu",
+    "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước",
+    "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk",
+    "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang",
+    "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang",
+    "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu",
+    "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An",
+    "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam",
+    "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh",
+    "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên Huế", "Tiền Giang",
+    "TP Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái"
   ];
 
   const renderDropdown = (list) => {
     cityDropdown.innerHTML = "";
     if (list.length === 0) {
-      cityDropdown.innerHTML =
-        '<div class="dropdown-item no-result">Không tìm thấy</div>';
+      cityDropdown.innerHTML = '<div class="dropdown-item no-result">Không tìm thấy</div>';
     } else {
       list.forEach((prov) => {
         const item = document.createElement("div");
@@ -136,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cityDropdown.classList.add("hidden");
   });
 
-  // --- 3. HÀM BÁO LỖI CHỮ ĐỎ DƯỚI Ô ---
+  // --- 3. HÀM BÁO LỖI ---
   const showError = (id, msg) => {
     document.getElementById(`err-${id}`).innerText = msg;
   };
@@ -144,40 +100,38 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById(`err-${id}`).innerText = "";
   };
 
-  // --- 4. HÀM KIỂM TRA TỪNG Ô (VALIDATE) ---
+  // --- 4. CÁC HÀM KIỂM TRA (VALIDATE) ---
   const validateName = () => {
-    const val = inputs.fullname.value.trim();
-    document.getElementById("fullname").addEventListener("input", function () {
-    this.value = this.value.replace(/[^a-zA-ZÀ-ỹ0-9\s]/g, "")});
-    document.getElementById("fullname").addEventListener("input", function () {
-    this.value = this.value.replace(/[^a-zA-ZÀ-ỹ\s]/g, "")});
-    if (val === "") {
+    const val = inputs.fullname.value; 
+    
+    if (val.trim() === "") {
       showError("fullname", "* Tên không được để trống.");
       return false;
     }
-    if (val.split(/\s+/).length < 2) {
+    
+    const nameRegex = /^[a-zA-ZÀ-ỹđĐ\s]+$/;
+    if (!nameRegex.test(val)) {
+      showError("fullname", "* Tên chỉ được chứa chữ cái, không chứa số/ký hiệu.");
+      return false;
+    }
+
+    if (val.trim().split(/\s+/).length < 2) {
       showError("fullname", "* Tên phải từ 2 từ trở lên (VD: Nguyễn Văn A).");
       return false;
     }
+
     clearError("fullname");
     return true;
   };
 
   const validateDob = () => {
-    const d = inputs.dobDay.value,
-      m = inputs.dobMonth.value,
-      y = inputs.dobYear.value;
+    const d = inputs.dobDay.value, m = inputs.dobMonth.value, y = inputs.dobYear.value;
     if (!d || !m || !y) {
       showError("dob", "* Vui lòng chọn đủ Ngày/Tháng/Năm.");
       return false;
     }
-    const date = new Date(y, m - 1, d),
-      today = new Date();
-    if (
-      date.getFullYear() != y ||
-      date.getMonth() != m - 1 ||
-      date.getDate() != d
-    ) {
+    const date = new Date(y, m - 1, d), today = new Date();
+    if (date.getFullYear() != y || date.getMonth() != m - 1 || date.getDate() != d) {
       showError("dob", "* Ngày sinh không hợp lệ.");
       return false;
     }
@@ -185,14 +139,8 @@ document.addEventListener("DOMContentLoaded", () => {
       showError("dob", "* Ngày sinh không được ở tương lai.");
       return false;
     }
-
     let age = today.getFullYear() - date.getFullYear();
-    if (
-      today.getMonth() < date.getMonth() ||
-      (today.getMonth() === date.getMonth() && today.getDate() < date.getDate())
-    )
-      age--;
-
+    if (today.getMonth() < date.getMonth() || (today.getMonth() === date.getMonth() && today.getDate() < date.getDate())) age--;
     if (age < 13) {
       showError("dob", "* Phải từ đủ 13 tuổi trở lên.");
       return false;
@@ -267,88 +215,66 @@ document.addEventListener("DOMContentLoaded", () => {
     return true;
   };
 
-  // --- 5. BẬT/TẮT NÚT ĐĂNG KÝ VÀ LẮNG NGHE SỰ KIỆN ---
+  // --- 5. LẮNG NGHE SỰ KIỆN (BẬT/TẮT NÚT ĐĂNG KÝ) ---
   const checkAllValid = () => {
-    const isValid =
-      validateName() &&
-      validateDob() &&
-      validatePhone() &&
-      validateEmail() &&
-      validatePassword() &&
-      validateConfirmPassword() &&
-      validateCity() &&
-      inputs.terms.checked;
+    const isValid = validateName() && validateDob() && validatePhone() &&
+      validateEmail() && validatePassword() && validateConfirmPassword() &&
+      validateCity() && inputs.terms.checked;
     btnSubmit.disabled = !isValid;
   };
 
-  // Bắt sự kiện gõ (input) và click ra ngoài (blur)
+  // --- CHẶN KHOẢNG TRẮNG KÉP ---
+  inputs.fullname.addEventListener("keydown", function(e) {
+    if (e.key === " " && this.value.length === 0) {
+      e.preventDefault();
+    }
+    if (e.key === " " && this.value.endsWith(" ")) {
+      e.preventDefault();
+    }
+  });
+
   inputs.fullname.addEventListener("input", () => {
     validateName();
     checkAllValid();
   });
-  inputs.fullname.addEventListener("blur", validateName);
+
+  inputs.fullname.addEventListener("blur", function() {
+    this.value = this.value.replace(/[^a-zA-ZÀ-ỹđĐ\s]/g, ""); 
+    this.value = this.value.trim().replace(/\s{2,}/g, " ");
+    validateName();
+    checkAllValid();
+  });
 
   [inputs.dobDay, inputs.dobMonth, inputs.dobYear].forEach((el) => {
-    el.addEventListener("change", () => {
-      validateDob();
-      checkAllValid();
-    });
+    el.addEventListener("change", () => { validateDob(); checkAllValid(); });
   });
 
   inputs.phone.addEventListener("input", (e) => {
-    e.target.value = e.target.value.replace(/\D/g, "");
+    e.target.value = e.target.value.replace(/\D/g, ""); 
     validatePhone();
     checkAllValid();
   });
   inputs.phone.addEventListener("blur", validatePhone);
 
-  inputs.email.addEventListener("input", () => {
-    validateEmail();
-    checkAllValid();
-  });
+  inputs.email.addEventListener("input", () => { validateEmail(); checkAllValid(); });
   inputs.email.addEventListener("blur", validateEmail);
 
-  inputs.password.addEventListener("input", () => {
-    validatePassword();
-    checkAllValid();
-  });
+  inputs.password.addEventListener("input", () => { validatePassword(); checkAllValid(); });
   inputs.password.addEventListener("blur", validatePassword);
 
-  inputs.confirm.addEventListener("input", () => {
-    validateConfirmPassword();
-    checkAllValid();
-  });
+  inputs.confirm.addEventListener("input", () => { validateConfirmPassword(); checkAllValid(); });
   inputs.confirm.addEventListener("blur", validateConfirmPassword);
 
-  inputs.city.addEventListener("blur", () => {
-    setTimeout(validateCity, 200);
-  }); // Delay để click dropdown kịp nhận
+  inputs.city.addEventListener("blur", () => { setTimeout(validateCity, 200); });
   inputs.terms.addEventListener("change", checkAllValid);
 
-  // --- 6. XỬ LÝ SUBMIT VÀ CLEAR ---
-
-  
-  submitBtn.addEventListener("click", function () {
-    window.location.href = "index_dangnhap.html";
-  });
-
-  
-
+  // --- 6. XỬ LÝ SUBMIT, HIỂN THỊ TÓM TẮT VÀ NÚT OK ---
   form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    if (
-      validateName() &&
-      validateDob() &&
-      validatePhone() &&
-      validateEmail() &&
-      validatePassword() &&
-      validateConfirmPassword() &&
-      validateCity() &&
-      inputs.terms.checked
-    ) {
-      const gender = document.querySelector(
-        'input[name="gender"]:checked',
-      ).value;
+    e.preventDefault(); 
+    
+    if (validateName() && validateDob() && validatePhone() && validateEmail() && validatePassword() && validateConfirmPassword() && validateCity() && inputs.terms.checked) {
+      
+      const gender = document.querySelector('input[name="gender"]:checked').value;
       const dob = `${inputs.dobDay.value}/${inputs.dobMonth.value}/${inputs.dobYear.value}`;
 
       const userData = {
@@ -359,8 +285,10 @@ document.addEventListener("DOMContentLoaded", () => {
         email: inputs.email.value,
         city: inputs.city.value,
       };
+      
       localStorage.setItem("userForm", JSON.stringify(userData));
 
+      // Đổ dữ liệu vào bảng tóm tắt
       document.getElementById("sum-name").innerText = userData.name;
       document.getElementById("sum-dob").innerText = userData.dob;
       document.getElementById("sum-gender").innerText = userData.gender;
@@ -368,17 +296,22 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("sum-email").innerText = userData.email;
       document.getElementById("sum-city").innerText = userData.city;
 
-      summaryBox.classList.remove("hidden");
+      // Ẩn form và hiện bảng tóm tắt
+      form.classList.add("hidden");
+      document.getElementById("summaryBox").classList.remove("hidden");
     }
   });
 
-  btnClear.addEventListener("click", () => {
-    form.reset();
-    document
-      .querySelectorAll(".error-msg")
-      .forEach((el) => (el.innerText = ""));
-    summaryBox.classList.add("hidden");
-    btnSubmit.disabled = true;
-  });
-});
+  // Sự kiện cho nút OK để chuyển sang trang Đăng nhập
+  const okBtn = document.getElementById("okBtn");
+  if(okBtn) {
+    okBtn.addEventListener("click", () => {
+      window.location.href = "index_dangnhap.html";
+    });
+  }
 
+  btnClear.addEventListener("click", () => {
+    form.reset(); 
+    document.querySelectorAll(".error-msg").forEach((el) => (el.innerText = ""));
+    btnSubmit.disabled = true; 
+  });
