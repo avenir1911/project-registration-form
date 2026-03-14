@@ -261,9 +261,6 @@ label {
   cursor: default;
 }
 
-/* ========================================= */
-/* CSS CHO BẢNG TÓM TẮT VÀ ẨN FORM           */
-/* ========================================= */
 .summary-box {
   margin-top: 20px;
   padding: 15px;
@@ -293,9 +290,6 @@ form.hidden {
   color: #333;
 }
 
-/* ========================================= */
-/* RESPONSIVE CHO ĐIỆN THOẠI (MOBILE)        */
-/* ========================================= */
 @media (max-width: 480px) {
   .screen-wrapper {
     padding: 0;

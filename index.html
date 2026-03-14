@@ -11,23 +11,23 @@
       <div class="form-container">
         <h2 class="form-title">ĐĂNG KÝ THÔNG TIN NGƯỜI DÙNG</h2>
 
-        <form id="registerForm" autocomplete="off">
+        <form id="registerForm" autocomplete="off" method="POST" action="xuly_dangky.php">
           <div class="form-group">
             <label for="fullname">HỌ VÀ TÊN</label>
-            <input type="text" id="fullname" class="form-control" />
+            <input type="text" id="fullname" name="fullname" class="form-control" />
             <span class="error-msg" id="err-fullname"></span>
           </div>
 
           <div class="form-group">
             <label>NGÀY SINH</label>
             <div class="dob-group">
-              <select id="dobDay" class="form-control dob-select">
+              <select id="dobDay" name="dobDay" class="form-control dob-select">
                 <option value="">Ngày</option>
               </select>
-              <select id="dobMonth" class="form-control dob-select">
+              <select id="dobMonth" name="dobMonth" class="form-control dob-select">
                 <option value="">Tháng</option>
               </select>
-              <select id="dobYear" class="form-control dob-select">
+              <select id="dobYear" name="dobYear" class="form-control dob-select">
                 <option value="">Năm</option>
               </select>
             </div>
@@ -46,19 +46,19 @@
 
           <div class="form-group">
             <label for="phone">SỐ ĐIỆN THOẠI</label>
-            <input type="text" id="phone" class="form-control" maxlength="11" />
+            <input type="text" id="phone" name="phone" class="form-control" maxlength="11" />
             <span class="error-msg" id="err-phone"></span>
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" class="form-control" />
+            <input type="email" id="email" name="email" class="form-control" />
             <span class="error-msg" id="err-email"></span>
           </div>
 
           <div class="form-group">
             <label for="password">Mật khẩu</label>
-            <input type="password" id="password" class="form-control" />
+            <input type="password" id="password" name="password" class="form-control" />
             <span class="error-msg" id="err-password"></span>
           </div>
 
@@ -71,7 +71,7 @@
           <div class="form-group">
             <label for="city">Tỉnh/Thành phố</label>
             <div class="custom-dropdown-wrapper">
-              <input type="text" id="city" class="form-control" placeholder="Gõ để tìm hoặc chọn..." />
+              <input type="text" id="city" name="city" class="form-control" placeholder="Gõ để tìm hoặc chọn..." autocomplete="off"/>
               <div class="dropdown-list hidden" id="cityDropdown"></div>
             </div>
             <span class="error-msg" id="err-city"></span>
@@ -88,17 +88,6 @@
           </div>
         </form>
 
-        <div id="summaryBox" class="summary-box hidden">
-          <h3 style="color: #00a2ff; font-size: 18px; margin-bottom: 15px;">ĐĂNG KÝ THÀNH CÔNG!</h3>
-          <p><strong>Họ tên:</strong> <span id="sum-name"></span></p>
-          <p><strong>Ngày sinh:</strong> <span id="sum-dob"></span></p>
-          <p><strong>Giới tính:</strong> <span id="sum-gender"></span></p>
-          <p><strong>SĐT:</strong> <span id="sum-phone"></span></p>
-          <p><strong>Email:</strong> <span id="sum-email"></span></p>
-          <p><strong>Tỉnh/Thành:</strong> <span id="sum-city"></span></p>
-          
-          <button id="okBtn" class="submit-btn" style="margin-top: 20px; width: 100%;">OK, ĐẾN TRANG ĐĂNG NHẬP</button>
-        </div>
       </div>
     </div>
 
